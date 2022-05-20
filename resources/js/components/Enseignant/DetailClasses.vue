@@ -42,6 +42,8 @@
                                                     </router-link>
                                                 </div>
                                             </div>
+
+
                                             <!-- .nk-block-head-content -->
                                             <div class="nk-block-head-content">
                                                 <div class="toggle-wrap nk-block-tools-toggle">
