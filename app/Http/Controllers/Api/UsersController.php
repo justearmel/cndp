@@ -110,10 +110,7 @@ class UsersController extends Controller
         if(count($user)>0)
         {
             //nous allons rechercher les informations de l'utilisateur
-
-
             //nous allons faire les roukaskas 
-
             $typeofuser="";
             $theuserid=0;
 
@@ -141,13 +138,27 @@ class UsersController extends Controller
 
                $users = DB::table('users')
                ->join('assigner', 'users.id', '=', 'assigner.idlocale_assigner')
+               ->where('id', '=',$theuserid)
                ->get();
 
                $success = true;
                $message = 'Connexion réussie';
                $data= $users;
 
-           }else
+           }else if($theuser[0]->type_users=='Teacher')
+           {
+               //nous sommes dans le cas de figure d'un enseignant
+               //nous allons donc récuperer les informations dans assigner aussi pour partie avec
+               
+               $users = DB::table('users')
+               ->where('id', '=',$theuserid)
+               ->get();
+               $success = true;
+               $message = 'Connexion réussie';
+               $data= $users;
+
+           }
+           else
            {
             $success = true;
             $message = 'Connexion réussie';

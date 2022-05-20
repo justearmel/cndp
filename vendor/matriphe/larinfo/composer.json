@@ -1,0 +1,59 @@
+{
+    "name": "matriphe/larinfo",
+    "description": "Display system information (IP address, OS, versions) for Laravel.",
+    "type": "library",
+    "keywords":[
+        "laravel",
+        "larinfo",
+        "ipinfo",
+        "linfo",
+        "sysinfo"
+    ],
+    "require": {
+        "php": "^8.0.2",
+        "ext-pdo": "*",
+        "davidepastore/ipinfo": "^0.6",
+        "laravel/framework": "^9.0",
+        "linfo/linfo": "^4.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muhammad Zamroni",
+            "email": "halo@matriphe.com",
+            "homepage": "https://matriphe.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Matriphe\\Larinfo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Matriphe\\Larinfo\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Matriphe\\Larinfo\\LarinfoServiceProvider"
+            ],
+            "aliases": {
+                "Larinfo": "Matriphe\\Larinfo\\LarinfoFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
