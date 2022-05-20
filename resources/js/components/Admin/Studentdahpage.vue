@@ -48,35 +48,96 @@
 
                         <div class="nk-block">
                             <div class="row g-gs">
+
+                                <div class="col-md-4">
+                                    <router-link :to="{ name: 'locale-studentinscription' }"
+                                        class="nk-download shadow-sm">
+                                        <div class="data">
+                                            <div class="thumb"><em class="icon ni ni-file-docs" style="font-size: -webkit-xxx-large;"></em></div>
+                                            <div class="info">
+                                                <h6 class="title"><span class="name">Inscriptions</span></h6>
+                                                <div class="meta" style="display:none">
+                                                    <span class="version">
+                                                        <span class="text-soft">Version: </span> <span>1.3.1</span>
+                                                    </span>
+                                                    <span class="release">
+                                                        <span class="text-soft">Status: </span> <span
+                                                            class="badge badge-dim bg-success">active</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </router-link>
+                                </div>
+
+
+<div class="col-md-4">
+                                    <router-link :to="{ name: 'locale-reinscription' }"
+                                        class="nk-download shadow-sm">
+                                        <div class="data">
+                                            <div class="thumb"><em class="icon ni ni-file-docs" style="font-size: -webkit-xxx-large;"></em></div>
+                                            <div class="info">
+                                                <h6 class="title"><span class="name">Réinscriptions</span></h6>
+                                                <div class="meta" style="display:none">
+                                                    <span class="version">
+                                                        <span class="text-soft">Version: </span> <span>1.3.1</span>
+                                                    </span>
+                                                    <span class="release">
+                                                        <span class="text-soft">Status: </span> <span
+                                                            class="badge badge-dim bg-success">active</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </router-link>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <router-link :to="{ name: 'locale-listeclasses' }"
+                                        class="nk-download shadow-sm">
+                                        <div class="data">
+                                            <div class="thumb"><em class="icon ni ni-building" style="font-size: -webkit-xxx-large;"></em></div>
+                                            <div class="info">
+                                                <h6 class="title"><span class="name">Classes</span></h6>
+                                                <div class="meta" style="display:none">
+                                                    <span class="version">
+                                                        <span class="text-soft">Version: </span> <span>1.3.1</span>
+                                                    </span>
+                                                    <span class="release">
+                                                        <span class="text-soft">Status: </span> <span
+                                                            class="badge badge-dim bg-success">active</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </router-link>
+                                </div>
+
+                                 <div class="col-md-4">
+                                    <router-link :to="{ name: 'locale-listeclasses' }"
+                                        class="nk-download shadow-sm">
+                                        <div class="data">
+                                            <div class="thumb"><em class="icon ni ni-building" style="font-size: -webkit-xxx-large;"></em></div>
+                                            <div class="info">
+                                                <h6 class="title"><span class="name">Affectés</span></h6>
+                                                <div class="meta" style="display:none">
+                                                    <span class="version">
+                                                        <span class="text-soft">Version: </span> <span>1.3.1</span>
+                                                    </span>
+                                                    <span class="release">
+                                                        <span class="text-soft">Status: </span> <span
+                                                            class="badge badge-dim bg-success">active</span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </router-link>
+                                </div>
+
                                        
-                                 <div class="col-lg-4">
-                                                        <div class="card">
-                                                           
-                                                            <div class="card-inner">
-                                                                <h5 class="card-title">Inscriptions</h5>
-                                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                            </div>
-                                                        </div>
-                                   </div>    
-                                   <div class="col-lg-4">
-                                                        <div class="card">
-                                                           
-                                                            <div class="card-inner">
-                                                                <h5 class="card-title">Réinscriptions</h5>
-                                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                            </div>
-                                                        </div>
-                                   </div>  
-                                     <div class="col-lg-4">
-                                                        <div class="card">
-                                                           
-                                                            <div class="card-inner">
-                                                                <h5 class="card-title">Classes</h5>
-                                                                <router-link :to="{ name: 'locale-listeclasses' }" href="#" class="btn btn-primary">Go somewhere</router-link>
-                                                            </div>
-                                                        </div>
-                                   </div>  
-                                   <div class="col-lg-4">
+                                
+                                      
+                                   <div class="col-md-4">
                                                         <div class="card">
                                                            
                                                             <div class="card-inner">
@@ -85,16 +146,8 @@
                                                             </div>
                                                         </div>
                                    </div>  
-                                   <div class="col-lg-4">
-                                                        <div class="card">
-                                                           
-                                                            <div class="card-inner">
-                                                                <h5 class="card-title">Affectés</h5>
-                                                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                                            </div>
-                                                        </div>
-                                   </div>  
-                                   <div class="col-lg-4">
+                                    
+                                   <div class="col-md-4">
                                                         <div class="card">
                                                            
                                                             <div class="card-inner">
@@ -103,7 +156,7 @@
                                                             </div>
                                                         </div>
                                    </div>  
-                                   <div class="col-lg-4">
+                                   <div class="col-md-4">
                                                         <div class="card">
                                                            
                                                             <div class="card-inner">
@@ -112,7 +165,7 @@
                                                             </div>
                                                         </div>
                                    </div>  
-                                   <div class="col-lg-4">
+                                   <div class="col-md-4">
                                                         <div class="card">
                                                            
                                                             <div class="card-inner">
@@ -217,7 +270,7 @@ getclassesNb
     },
   watch: {
     // call again the method if the route changes
-    // '$route': 'fetchData'
+    '$route': 'fetchData'
   }
 
 }

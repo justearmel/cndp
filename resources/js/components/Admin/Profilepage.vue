@@ -464,7 +464,7 @@ axios.get('/sanctum/csrf-cookie').then(response => {
     },
   watch: {
     // call again the method if the route changes
-    '$route': 'fetchData'
+    // '$route': 'fetchData'
   }
 
 }

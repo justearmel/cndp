@@ -142,7 +142,7 @@ return {
 axios.get('/sanctum/csrf-cookie').then(response => {
                      axios.post('/api/UpdatingInfos', {
                         sessionEtab: sessionEtab,
-                         etape: 4,
+                         etape: 6,
                         
                        
                     })

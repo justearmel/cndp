@@ -99,6 +99,8 @@
                                                                             <option value="Semestres">Semestres</option>
                                                                             <option value="Notes">Notes</option>
                                                                             <option value="Rating">Rating</option>
+                                                                            <option value="Enseigner">Enseigner</option>
+                                                                            <option value="Etablissements">Etablissement</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>

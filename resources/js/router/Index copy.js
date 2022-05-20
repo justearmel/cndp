@@ -9,7 +9,8 @@ import LocaleStudentDashpage from '../components/Admin/Studentdahpage.vue';
 import LocaleListeclaassepage from '../components/Admin/Listeclassespage.vue';
 import LocaleStudentInscriptionpage from '../components/Admin/Studentinscriptionpage.vue';
 import LocaleStudentreInscriptionpage from '../components/Admin/Studentreinscriptionpage.vue';
-import LocaleReInscriptionpage from '../components/Admin/Reinscriptionpage.vue';
+import LocaleStudentreInscriptionpages from '../components/Admin/Reinscriptionpage.vue';
+
 
 export const routes = [
     {
@@ -87,28 +88,28 @@ export const routes = [
       // watch:'fetchData',
       component: LocaleStudentInscriptionpage 
   },
-
-    {
-      name: 'locale-reinscription',
-      path: '/localeadmin/reinscriptionpage',
-      meta:{
-        requiresAuth:true,
-        reload: true,
-      },
-      // watch:'fetchData',
-      component: LocaleReInscriptionpage 
-  },
-
   {
-    name: 'locale-Studentreinscription',
+    name: 'locale-studentreinscription',
     path: '/localeadmin/reinscription/student/:id',
     meta:{
       requiresAuth:true,
       reload: true,
     },
-    props: true,
     // watch:'fetchData',
+    props: true,
     component: LocaleStudentreInscriptionpage 
+},
+,
+  {
+    name: 'locale-studentreinscriptionpage',
+    path: '/localeadmin/reinscription',
+    meta:{
+      requiresAuth:true,
+      reload: true,
+    },
+    props: false,
+    // watch:'fetchData',
+    component: LocaleStudentreInscriptionpages 
 },
     {
         name: 'locale-listeclasses',

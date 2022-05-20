@@ -28,6 +28,10 @@ class UsersImport implements ToModel
       $password=$row[9];
       $datecnx=$row[10];
       $typecompte=$row[11];
+      if($typecompte=="Teatcher")
+      {
+          $typecompte="Teacher";
+      }
       $dateactivationcompte=$row[12];
       $dateaexpirationcompte=$row[13];
       $statutcompte=$row[14];

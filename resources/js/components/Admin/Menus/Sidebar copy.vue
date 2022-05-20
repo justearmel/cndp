@@ -5,10 +5,12 @@
         </div><br>
                     <div class="nk-sidebar-content">
                         
-                        <div class="nk-sidebar-menu" data-simplebar>
+                        <div class="nk-sidebar-menu" data-simplebar >
+
+                           
                             
                             <ul class="nk-menu">
-                               
+                                <!-- <div class="simplebar-track simplebar-vertical" style="visibility: visible;"><div class="simplebar-scrollbar simplebar-visible" style="height: 222px; transform: translate3d(0px, 0px, 0px); display: block;"></div></div> -->
                             <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-calender-date-fill"></em></span>
@@ -69,12 +71,6 @@
                                         <span class="nk-menu-icon"><em class="icon ni ni-grid-alt-fill"></em></span>
                                         <span class="nk-menu-text">Importations</span>
                                     </router-link>
-                                </li>
-                                  <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link">
-                                        <span class="nk-menu-icon"></span>
-                                        <span class="nk-menu-text"></span>
-                                    </a>
                                 </li>
                                 
                             </ul><!-- .nk-menu -->

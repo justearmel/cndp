@@ -110,6 +110,7 @@ axios.get('/sanctum/csrf-cookie').then(response => {
                                  this.message =response.data.message;
 
                               let typeUser=response.data.data[0].type_users;
+                              let schoolName=response.data.data[0].libelle_etab;
                               let namesUser=response.data.data[0].nom_users+" "+response.data.data[0].prenom_users;
 
                           if(typeUser=='Admin_locale')
@@ -117,6 +118,7 @@ axios.get('/sanctum/csrf-cookie').then(response => {
                               //stockage des informations dans localstorage
                                 localStorage.setItem("UserData",JSON.stringify(response.data.data[0]));
                                 localStorage.setItem("UserName",namesUser);
+                                localStorage.setItem("schoolName",schoolName);
                                
                                 
                                 this.$router.push("/localeadmin/accueil");

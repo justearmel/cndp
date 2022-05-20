@@ -236,6 +236,61 @@ class SessionsController extends Controller
 
            endforeach; 
 
+        }if($etape==5)
+        {
+            //nous devons mettre a jour les informations des enseignants
+            $matieres=DB::table('matieres')
+            ->where('sessionEtab_mat', '=',$sessionEtab)
+            ->get();
+
+            foreach($matieres as $matiere): 
+
+                //nous recuperons les informations de la matieres pour mettre dans enseigner
+
+               $matiereid= $matiere->id_mat;
+               $teatcherid= $matiere->idteacher_mat;
+               $classeid= $matiere->idclasse_mat;
+               $codeEtab= $matiere->codeEtab_mat;
+
+                //nous allons verifier si cette ligne existe deja dans la table
+
+                $datanb=DB::table('enseigner')
+                ->where('idclasse_enseig', '=',$classeid)
+                ->where('idteacher_enseig', '=',$teatcherid)
+                ->where('idmatiere_enseig', '=',$matiereid)
+                ->where('codeEtab_enseig', '=',$codeEtab)
+                ->where('sessionEtab_enseig', '=',$sessionEtab)
+                ->count();
+
+                if($datanb==0)
+                {
+                    DB::table('enseigner')->insert([
+                        'idclasse_enseig' => $classeid,
+                        'idteacher_enseig' => $teatcherid,
+                        'idmatiere_enseig' => $matiereid,
+                        'codeEtab_enseig' => $codeEtab,
+                        'sessionEtab_enseig' => $sessionEtab,
+                       
+                     ]);
+                }
+
+
+               
+
+
+            endforeach;
+
+        }if($etape==6)
+        {
+           //nous devons changer le sexe de toutes les élèves de l'établissement
+           $sexe="F";
+           $affected = DB::table('users')
+           ->where('type_users', '=','Student')
+              ->update([
+                  'sexe_users' => $sexe,
+                  
+                ]);
+
         }
 
     }
@@ -291,6 +346,45 @@ class SessionsController extends Controller
 
 
         return response()->json($response);
+    }
+
+public function searchingclasses($classename,$sessionEtab)
+{
+    $nclasses= DB::table('classes')
+    ->where('libelle_classes', 'like', '%'.$classename.'%')
+    ->orwhere('type_classes', 'like', '%'.$classename.'%')
+    ->where('sessionEtab_classes', '=',$sessionEtab)
+    ->orderByRaw('order_classes ASC')
+    ->distinct()
+    ->get();
+    $success=true;
+
+    $response = [
+        'success' => $success,
+        'data' => $nclasses,
+    ];
+
+
+    return response()->json($response);
+}
+
+
+    public function getteachersnb($sessionEtab)
+    {
+        $nbusers= DB::table('enseigner')->distinct('idteacher_enseig')
+        ->where('sessionEtab_enseig', '=',$sessionEtab)
+        ->count('idteacher_enseig');
+        $success=true;
+
+        $response = [
+            'success' => $success,
+            'data' => $nbusers,
+        ];
+
+
+        return response()->json($response);
+       
+
     }
 
     public function getstudentsnb($sessionEtab)

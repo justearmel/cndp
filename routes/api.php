@@ -31,8 +31,11 @@ Route::post('importations/tables', [UsersController::class, 'importationstables'
 
 Route::get('/allsessions/{codeEtab}', [SessionsController::class, 'getallsessions']);
 Route::get('/getstudentsNb/{sessionEtab}', [SessionsController::class, 'getstudentsnb']);
+Route::get('/getteachersNb/{sessionEtab}', [SessionsController::class, 'getteachersnb']);
 Route::get('/getclassesNb/{sessionEtab}', [SessionsController::class, 'getclassesnb']);
 Route::get('/getclasses/{sessionEtab}', [SessionsController::class, 'getclasses']);
 Route::get('/getniveaux/{sessionEtab}', [SessionsController::class, 'getniveaux']);
 Route::get('/searching/{studentname}/{sessionEtab}', [UsersController::class, 'searchingstudents']);
+Route::get('/searchingclasse/{classename}/{sessionEtab}', [SessionsController::class, 'searchingclasses']);
 Route::get('/getstudentinfos/{studentid}/{sessionEtab}', [UsersController::class, 'getstudentinfos']);
+Route::get('/getstudentinfos/{studentid}', [UsersController::class, 'getthestudentinfos']);

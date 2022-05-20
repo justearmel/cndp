@@ -10,6 +10,15 @@ export default function useSessions()
     const nbteachers= ref('')
     const nbclasses = ref('')
 
+    const getteachersNb = async() => {
+
+        const lasession = localStorage.getItem("UserSessionchoose");
+        let response = await axios.get('/api/getteachersNb/'+lasession);
+      
+        nbteachers.value = response.data.data;
+
+    }
+
     const getstudentsNb = async() => {
 
         const lasession = localStorage.getItem("UserSessionchoose");
@@ -51,6 +60,7 @@ export default function useSessions()
         getstudentsNb,
         getclassesNb,
         getallsessions,
+        getteachersNb,
         thesessions,
         libellesesion,
         getallsessionschoosen,

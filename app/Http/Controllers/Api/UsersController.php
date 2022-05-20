@@ -15,11 +15,28 @@ use Illuminate\Support\Facades\DB;
 use App\Imports\InscriptionsImport;
 use App\Imports\SousmatieresImport;
 use App\Http\Controllers\Controller;
+use App\Imports\EtablissementImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class UsersController extends Controller
 {
 
+    public function getthestudentinfos($id)
+    {
+        $users = DB::table('users')
+        ->where('type_users', '=','Student')
+        ->where('statut_users', '=',1)
+        ->where('id', '=',$id)
+        ->get();
+        $success=true;
+
+        $response = [
+            'success' => $success,
+            'data' => $users,
+        ];
+
+        return response()->json($response);
+    }
 
     public function getstudentinfos($id,$sessionEtab)
     {
@@ -141,6 +158,8 @@ class UsersController extends Controller
 
                $users = DB::table('users')
                ->join('assigner', 'users.id', '=', 'assigner.idlocale_assigner')
+               ->join('etablissements', 'etablissements.code_etab', '=', 'assigner.codeEtab_assigner')
+               ->where('id', '=',$theuserid)
                ->get();
 
                $success = true;
@@ -318,6 +337,12 @@ class UsersController extends Controller
             // $fileNames="rating.csv";
             // $thisfile=$upload_path."/".$fileNames;
             Excel::import(new RatingImport, $thisfile);
+        }else if($table=="Enseigner")
+        {
+
+        }else if($table=="Etablissements")
+        {
+            Excel::import(new EtablissementImport, $thisfile);
         }
 
         return response()->json(['success'=>'You have successfully upload file.','loading'=>false]);

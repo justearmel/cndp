@@ -197,62 +197,44 @@
                                                 <div class="card-search search-wrap" data-search="search">
                                                     <div class="card-body">
                                                         <div class="search-content">
-                                                            <a href="#" class="search-back btn btn-icon toggle-search" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                                            <input type="text" class="form-control border-transparent form-focus-none" placeholder="rechercher une classe par le nom ou le niveau">
+                                                            <a href="#" class="search-back btn btn-icon toggle-search active" data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                                            <input type="text" class="form-control border-transparent form-focus-none" v-model="Searchclasse" data-value="{{ Searchclasse }}"    placeholder="rechercher une classe par le nom ou le niveau">
                                                             <button class="search-submit btn btn-icon"><em class="icon ni ni-search"></em></button>
                                                         </div>
                                                     </div>
                                                 </div><!-- .card-search -->
                                             </div><!-- .card-inner -->
                                             <div class="card-inner p-0">
-                                                <div class="nk-tb-list nk-tb-ulist">
-                                                    <div class="nk-tb-item nk-tb-head">
-                                                        
-                                                        <!-- <div class="nk-tb-col"><span class="sub-text">Order</span></div> -->
-                                                        <div class="nk-tb-col tb-col-mb"><span class="sub-text">Classes</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Tot. inscrits</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Tot. affectés</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Tot. internes</span></div>
-                                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text">Tot. orphélins</span></div>
-                                                        <div class="nk-tb-col tb-col-md"><span class="sub-text">Status</span></div>
-                                                        <div class="nk-tb-col nk-tb-col-tools text-end">
-                                                            
-                                                        </div>
-                                                    </div><!-- .nk-tb-item -->
-                                                    <div class="nk-tb-item" v-for="item in classes" :key="item.id_classes" >
-                                                       
-                                                       <!-- <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-amount" style="">1</span>
-                                                        </div> -->
-                                                        <div class="nk-tb-col tb-col-mb">
-                                                            <span class="tb-amount">{{item.libelle_classes}}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span style="text-align:center">{{item.nbinscrit_classes}}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md" >
-                                                           <span style="text-align:center">{{item.nbaffecte_classes}}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span style="text-align:center">{{item.nbinternes_classes}}</span>
-                                                        </div>
-                                                         <div class="nk-tb-col tb-col-lg">
-                                                            <span style="text-align:center">{{item.nbinternes_classes}}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                          
- <a href="#" class="btn btn-md btn-primary">xx</a>
-                                                            
-                                                               
-  <a href="#" class="btn btn-md btn-success">yy</a>
-                                                            
-                                                           
-                                                          
+                                                
+
+   <div class="row" >
+<div class="col-md-4" v-for="item in classes" :key="item.id_classes" style="margin-top:5px;margin-bottom: 5px;">
+                                                        <div class="card">
+                                                            <img src="/assets/images/salledeclasse.jpeg" class="card-img-top" alt="">
+                                                            <div class="card-inner">
+                                                                <h5 class="card-title" style="text-align:center"><span class="tb-amount">{{item.libelle_classes}}</span></h5>
+                                                             
+
+<div class="pricing-body">
+                                                                <ul class="pricing-features">
+                                                                    <li><span class="w-50">Total inscrits</span> - <span class="ms-auto">{{item.nbinscrit_classes}}</span></li>
+                                                                    <!-- <li><span class="w-50">Total sortant</span> - <span class="ms-auto">{{item.nbsortant_sessions}}</span></li> -->
+                                                                    <li><span class="w-50">Total internes</span> - <span class="ms-auto">{{item.nbinternes_classes}}</span></li>
+                                                                    <li><span class="w-50">Total externes</span> - <span class="ms-auto">{{item.nbexternes_classes}}</span></li>
+                                                                </ul>
+                                                                <div class="pricing-action">
+                                                                    <button class="btn btn-primary" >Détails</button>
+                                                                  
+                                                                </div>
+                                                            </div>
+                                                                
+                                                            </div>
                                                         </div>
                                                         
-                                                    </div><!-- .nk-tb-item -->
-                                                    
-                                                </div><!-- .nk-tb-list -->
+                                                    </div>
+   </div>
+
+
                                             </div><!-- .card-inner -->
                                             
                                         </div><!-- .card-inner-group -->
@@ -312,6 +294,7 @@ return {
         effectifcycle: false,
         Username:"",
         UserSession:"",
+        Searchclasse:"",
       };
     },
     methods: {
@@ -355,6 +338,33 @@ effectifcyclestate()
       
     },
   watch: {
+      Searchclasse(val) {
+      
+      if(val!="")
+      {
+          const lasession = localStorage.getItem("UserSessionchoose");
+axios.get('/sanctum/csrf-cookie').then(response => {
+                     axios.get('/api/searchingclasse/'+val+'/'+lasession)
+                        .then(response => {
+this.visibiliy=response.data.success;
+                            if (response.data.success) {
+
+                             
+                              this.classes=response.data.data;
+
+                            } else {
+                                //  this.error = response.data.message;
+                                
+
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error(error);
+                        });
+                })
+      }
+
+      },
     // call again the method if the route changes
     // '$route': 'fetchData'
   }
